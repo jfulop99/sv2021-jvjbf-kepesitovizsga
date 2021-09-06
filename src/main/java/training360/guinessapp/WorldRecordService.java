@@ -40,7 +40,11 @@ public class WorldRecordService {
     public BeatWorldRecordDto beatWorldRecord(Long id, BeatWorldRecordCommand command) {
 
         WorldRecord oldWorldRecord = worldRecordRepository.findById(id)
-                .orElseThrow(() -> new RecorderNotFoundException(URI.create("World record not found"), "World record not found"));
+                .orElseThrow(() -> new RecorderNotFoundException(URI.create("worlrecord/not-found"), "World record not found"));
+
+        Recorder newRecorder = recorderService.findRecorderById(command.getRecorderId());
+
+        //BeatWorldRecordDto beatWorldRecordDto = new BeatWorldRecordDto()
 
 
         return null;
