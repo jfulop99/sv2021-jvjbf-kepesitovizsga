@@ -44,9 +44,12 @@ public class WorldRecordService {
 
         Recorder newRecorder = recorderService.findRecorderById(command.getRecorderId());
 
-        //BeatWorldRecordDto beatWorldRecordDto = new BeatWorldRecordDto()
+        Double difference = command.getValues() - oldWorldRecord.getValue();
+
+        BeatWorldRecordDto beatWorldRecordDto = new BeatWorldRecordDto(oldWorldRecord.getDescription(), oldWorldRecord.getUnitOfMeasure(),
+                oldWorldRecord.getRecorder().getName(), oldWorldRecord.getValue(), newRecorder.getName(), command.getValues(), difference);
 
 
-        return null;
+        return beatWorldRecordDto;
     }
 }
